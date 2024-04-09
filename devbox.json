@@ -26,7 +26,11 @@
       "echo": [
         "go install  echo/*",
         "./maelstrom/maelstrom test -w echo --bin $GOPATH/bin/echo --node-count 1 --time-limit 10"
-      ]
+      ],
+      "unique-ids": [
+        "go install  unique-ids/*",
+        "./maelstrom/maelstrom test -w unique-ids --bin $GOPATH/bin/unique-ids --time-limit 30 --rate 1000 --node-count 3 --availability total --nemesis partition"
+      ]      
     }
   }
 }
