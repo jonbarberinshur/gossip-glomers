@@ -11,8 +11,8 @@ We use devbox to make sure the correct tools are available
 ```shell
 devbox run help
 ```
-You should see a nicely formatted version of this doc.
-If not, pls ask for help
+You should see a nicely formatted version of this doc. If not, pls ask for help
+
 5. Download maelstrom. In a new shell cd into this directory and run
 ```shell
 devbox run install
