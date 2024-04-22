@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	maelstrom "github.com/jepsen-io/maelstrom/demo/go"
-	"log/slog"
+	"log"
 )
 
 func main() {
@@ -16,6 +16,8 @@ func main() {
 			return err
 		}
 
+		log.Printf("Received a body of %+v",body)
+
 		// Update the message type to return back.
 		body["type"] = "echo_ok"
 
@@ -24,7 +26,7 @@ func main() {
 	})
 
 	if err := n.Run(); err != nil {
-		slog.Error("Unable to run the handler", slog.Any("error", err))
+		log.Fatalf("Unable to run the handler : %v",err)
 	}
 
 }
