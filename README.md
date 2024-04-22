@@ -31,6 +31,19 @@ To follow this approach, clone the `echo` script entry in [devbox.json](devbox.j
 
 This has already been done for the [unique id generation](https://fly.io/dist-sys/2/) challenge, but you have to write the code :-)
 
-## Interesting things
+## Hints & tips
 
-The [maelstrom project docs](https://github.com/jepsen-io/maelstrom?tab=readme-ov-file#documentation) are really handy - there are walkthroughs of some of the challenges and descriptions of supporting services
+If you want to print diagnostics or log lines you must write to stdout - the standard `log` package does this by default. More details in the [protocol](https://github.com/jepsen-io/maelstrom/blob/main/doc/protocol.md#protocol) docs
+
+You can write your own message types & handlers for the nodes to communicate with each other, in addition to the ones that maelstrom sends.
+
+The `sync` package provides some useful synchronization primitives - good [summary](https://teivah.medium.com/a-closer-look-at-go-sync-package-9f4e4a28c35a) by Teiva Harsanyi
+
+There are always 2 setup messages sent by maelstrom ahaed of the main workload, and you can add handlers for them if you wish. In order, they are
+
+* `init` has [this body](https://github.com/jepsen-io/maelstrom/blob/main/demo/go/node.go#L332-L336) - more [details](https://github.com/jepsen-io/maelstrom/blob/main/doc/protocol.md#initialization)
+* `topology` - more [details](https://github.com/jepsen-io/maelstrom/blob/main/doc/workloads.md#rpc-topology) 
+
+You don't have to use go for this - there are [example node implemenatations](https://github.com/jepsen-io/maelstrom/tree/main/demo) in different langauges. (The python one has an implementation for [raft](https://github.com/jepsen-io/maelstrom/blob/main/demo/python/raft.py)).
+
+The [maelstrom project docs](https://github.com/jepsen-io/maelstrom?tab=readme-ov-file#documentation) are really handy - there are walkthroughs of some of the challenges and descriptions of supporting services. Definitely read the page on interpreting [results](https://github.com/jepsen-io/maelstrom/blob/main/doc/results.md) as a start
