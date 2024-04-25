@@ -7,13 +7,14 @@ We use devbox to make sure the correct tools are available
 1. Use the [Determinate Nix installer](https://determinate.systems/posts/determinate-nix-installer/) to install nix
 2. Install [devbox](https://www.jetpack.io/devbox/docs/installing_devbox/)
 3. *Optional* install [direnv](https://direnv.net/docs/installation.html) so that cding into this directory will set up your shell
-4. Check everything is working so far. In a new shell run
+4. Clone this repository 
+5. Check everything is working so far. In a new shell in the root of this project run 
 ```shell
 devbox run help
 ```
 You should see a nicely formatted version of this doc. If not, pls ask for help
 
-5. Download maelstrom. In a new shell cd into this directory and run
+6. Download maelstrom. In a new shell cd into this directory and run
 ```shell
 devbox run install
 ```
