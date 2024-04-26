@@ -26,7 +26,7 @@
       ],
       "unique-ids": [
         "go install  unique-ids/*",
-        "maelstrom test test -w unique-ids --bin $GOPATH/bin/unique-ids --time-limit 30 --rate 1000 --node-count 3 --availability total --nemesis partition"
+        "maelstrom test -w unique-ids --bin $GOPATH/bin/unique-ids --time-limit 30 --rate 1000 --node-count 3 --availability total --nemesis partition"
       ]
     }
   }
