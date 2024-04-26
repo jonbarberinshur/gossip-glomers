@@ -37,20 +37,25 @@
         {
             maelstrom = pkgs.stdenvNoCC.mkDerivation rec {
 
-            name = "maelstrom";
+            pname = "maelstrom";
             version = "v0.2.3";
-            src = pkgs.fetchFromGitHub {
-                owner = "jepsen-io";
-                repo = "maelstrom";
-                rev = "v0.2.3";
-                fetchSubmodules = false;
-                sha256 = "sha256-nZS2oVF/m3yGU+HFD1sXdZbZaOfxYm3HMrxuCRZ0VMg=";
+            src = pkgs.fetchzip {
+                url = "https://github.com/jepsen-io/maelstrom/releases/download/v0.2.3/maelstrom.tar.bz2";
+                hash = "sha256-mE/FIHDLYd1lxAvECZGelZtbo0xkQgMroXro+xb9bMI";
             };
 
             dontBuild = true;
             installPhase = ''
                 runHook preInstall
-                #install -Dm644 fonts/ttf/*.ttf -t $out/share/fonts/opentype
+
+                mkdir -p $out/{bin,bin/lib,share/maelstrom}
+                cp -r $src/demo $out/share/maelstrom/
+                cp -r $src/doc $out/share/maelstrom/
+                cp $src/README.md $out/share/maelstrom/
+
+                cp -r $src/lib $out/bin/
+                cp $src/maelstrom $out/bin
+
                 runHook postInstall
             '';
             };
