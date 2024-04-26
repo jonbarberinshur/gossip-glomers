@@ -44,17 +44,17 @@
                 hash = "sha256-mE/FIHDLYd1lxAvECZGelZtbo0xkQgMroXro+xb9bMI";
             };
 
+            buildInputs = [ pkgs.jre pkgs.makeWrapper];
+
             dontBuild = true;
             installPhase = ''
                 runHook preInstall
 
-                mkdir -p $out/{bin,bin/lib,share/maelstrom}
-                cp -r $src/demo $out/share/maelstrom/
-                cp -r $src/doc $out/share/maelstrom/
-                cp $src/README.md $out/share/maelstrom/
+                mkdir -p $out/share
+                cp -r . $out/share/maelstrom
 
-                cp -r $src/lib $out/bin/
-                cp $src/maelstrom $out/bin
+                makeWrapper ${pkgs.jre}/bin/java $out/bin/maelstrom \
+                    --add-flags "-jar $out/share/maelstrom/lib/maelstrom.jar"
 
                 runHook postInstall
             '';
