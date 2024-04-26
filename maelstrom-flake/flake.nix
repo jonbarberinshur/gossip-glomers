@@ -54,7 +54,7 @@
                 cp -r . $out/share/maelstrom
 
                 makeWrapper ${pkgs.jre}/bin/java $out/bin/maelstrom \
-                    --add-flags "-jar $out/share/maelstrom/lib/maelstrom.jar"
+                    --add-flags "-Djava.awt.headless=true -jar $out/share/maelstrom/lib/maelstrom.jar"
 
                 runHook postInstall
             '';
