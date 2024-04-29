@@ -40,7 +40,7 @@
             pname = "maelstrom";
             version = "v0.2.3";
             src = pkgs.fetchzip {
-                url = "https://github.com/jepsen-io/maelstrom/releases/download/v0.2.3/maelstrom.tar.bz2";
+                url = "https://github.com/jepsen-io/maelstrom/releases/download/${version}/maelstrom.tar.bz2";
                 hash = "sha256-mE/FIHDLYd1lxAvECZGelZtbo0xkQgMroXro+xb9bMI";
             };
 
@@ -61,10 +61,5 @@
             };
         });
 
-
-      # The default package for 'nix build'. This makes sense if the
-      # flake provides only one package or there is a clear "main"
-      # package.
-      defaultPackage = forAllSystems (system: self.packages.${system}.maelstrom);
     };
 }

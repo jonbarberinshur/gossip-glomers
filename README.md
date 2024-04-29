@@ -16,11 +16,6 @@ You should see a nicely formatted version of this doc. If not, pls ask for help
 
 Note that the first time you run devbox it can take some time to fetch tooling.
 
-6. Download maelstrom. In a new shell cd into this directory and run
-```shell
-devbox run install
-```
-
 ## Tackling the challenges.
 One way to tackle the challenges is to clone the way the first [echo](https://fly.io/dist-sys/1/) challenge has been done for you.
 
